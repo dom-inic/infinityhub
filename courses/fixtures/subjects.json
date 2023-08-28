@@ -1,0 +1,49 @@
+[
+{
+  "model": "courses.subject",
+  "pk": 1,
+  "fields": {
+    "title": "Machine for dummies",
+    "slug": "machine-for-dummies"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "subject": 1,
+    "title": "Data visualization",
+    "slug": "data-visualization",
+    "overview": "data visualization is one of the most important concepts that one needs to know is you want to be a good data scientist. we are going to learn how we can work with different python libraries.",
+    "created": "2023-08-28T01:09:32.239Z"
+  }
+},
+{
+  "model": "courses.topic",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "title": "Getting started- installation",
+    "description": "python installation"
+  }
+},
+{
+  "model": "courses.topic",
+  "pk": 2,
+  "fields": {
+    "course": 1,
+    "title": "using pandas to explore the data",
+    "description": "pandas"
+  }
+},
+{
+  "model": "courses.topic",
+  "pk": 3,
+  "fields": {
+    "course": 1,
+    "title": "using matplotlib to visualize the data for better understanding",
+    "description": ""
+  }
+}
+]

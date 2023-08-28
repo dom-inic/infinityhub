@@ -1,0 +1,8 @@
+
+// fixtures 
+// dumpdata 
+python3 manage.py dumpdata courses --indent=2
+python3 manage.py dumpdata courses --indent=2 --output=courses/fixtures/subjects.json
+
+// loaddata 
+python3 manage.py loaddata subjects.json 
