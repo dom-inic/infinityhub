@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from .fields import OrderField
 
 # Create your models here.
 
@@ -33,9 +34,13 @@ class Topic(models.Model):
     course = models.ForeignKey(Course, related_name='topics', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    order = OrderField(blank=True, for_fields=['course'])
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self) -> str:
-        return self.title
+        return f'{self.order}. {self.title}'
     
 class Content(models.Model):
     topic  = models.ForeignKey(Topic, related_name='contents', on_delete=models.CASCADE)
@@ -49,7 +54,11 @@ class Content(models.Model):
                                     )}
                                     )
     object_id = models.PositiveIntegerField()
-    item = GenericForeignKey('content_type', 'object_id') 
+    item = GenericForeignKey('content_type', 'object_id')
+    order = OrderField(blank=True, for_fields=['topic'])
+
+    class Meta:
+        ordering = ['order']
 
 
 # abstract model 
