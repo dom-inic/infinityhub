@@ -9,13 +9,13 @@ from . models import Course
 class OwnerMixin(object):
 
     def get_queryset(self):
-        qs = super().get_queryset()
-        return qs.filter(owner=self.request.user)
+        qs = super().get_queryset() # type: ignore
+        return qs.filter(owner=self.request.user) # type: ignore
     
 class OwnerEditMixin(object):
     def form_valid(self, form):
-        form.instance.owner = self.request.user
-        return super().form_valid(form)
+        form.instance.owner = self.request.user # type: ignore
+        return super().form_valid(form) # type: ignore
     
 class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin, PermissionRequiredMixin):
     # queryset  = object_list

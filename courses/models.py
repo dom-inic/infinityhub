@@ -34,7 +34,7 @@ class Topic(models.Model):
     course = models.ForeignKey(Course, related_name='topics', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    order = OrderField(blank=True, for_fields=['course'])
+    order = OrderField(blank=True, for_fields=['course']) # type: ignore
 
     class Meta:
         ordering = ['order']
@@ -55,7 +55,7 @@ class Content(models.Model):
                                     )
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
-    order = OrderField(blank=True, for_fields=['topic'])
+    order = OrderField(blank=True, for_fields=['topic']) # type: ignore
 
     class Meta:
         ordering = ['order']
