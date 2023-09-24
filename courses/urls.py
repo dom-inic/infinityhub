@@ -17,6 +17,9 @@ urlpatterns = [
         views.ContentCreateUpdateView.as_view(),
         name='topic_content_update'
         ),
-    path('content/<int:id>/delete/', views.ContentDeleteView.as_view(), name='topic_content_delete')
+    path('content/<int:id>/delete/', views.ContentDeleteView.as_view(), name='topic_content_delete'),
+    path('topic/<int:topic_id>/', views.TopicContentList.as_view(), name='topic_content_list'),
+    path('topic/order/', views.TopicOrderView.as_view(), name='topic_order'),
+    path('content/order/', views.ContentOrderView.as_view(), name='content_order'),
 ]
 

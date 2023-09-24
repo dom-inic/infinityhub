@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load course %}
+{% block title %}
+Topic {{ topic.order|add:1}} : {{ topic.title }}
+{% endblock title %}
+
+{% block content %}
+{% with course=topic.course %}
+<h1> Course "{{ course.title }}"</h1>
+<div class="contents">
+    <h3>Topics</h3>
+    <ul id="topics">
+        {% for t in course.topics.all  %}
+        <li data-id="{{ t.id }}" {% if t == topic %} class="selected"{% endif %}>
+            <a href="{% url "topic_content_list" t.id %}">
+                <span>
+                    Topic <span class="order">{{ t.order|add:1}}</span>
+                </span>
+            </br>
+            {{ t.title }}
+            </a>
+        </li>
+        {% empty %}
+        <li>No topics yet</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url "course_topic_update" course.id%}">Edit Topics</a></p>
+</div>
+<div class="topic">
+    <h2>Topic {{ topic.order|add:1 }}: {{ topic.title }} </h2>
+    <h3>Topic contents: </h3> 
+    <div id="topic-contents">
+        {% for content in topic.contents.all  %}
+        <div data-id="{{ content.id }}">
+            {% with item=content.item %}
+            <p>{{ item }} ({{ item|model_name }})</p>
+            {% comment %} TODO :fix reverse match error {% endcomment %}
+            <a href="{% url "topic_content_update" topic.id item|model_name item.id %}">Edit</a>
+            <form action="{% url "topic_content_delete" content.id%}" method="post">
+                <input type="submit" value="Delete">
+                {% csrf_token %}
+            </form>
+            {% endwith %}
+        </div>
+        {% empty %}
+        <p>This Topic has no contents yet.</p>
+        {% endfor %}
+    </div>
+    <h3>Add new content</h3>
+    <ul class="content-types">
+        <li><a href="{% url "topic_content_create" topic.id "text"%}">Text</a></li>
+        <li><a href="{% url "topic_content_create" topic.id "image"%}">Image</a></li>
+        <li><a href="{% url "topic_content_create" topic.id "video"%}">Video</a></li>
+        <li><a href="{% url "topic_content_create" topic.id "file"%}">File</a></li>
+    </ul>
+</div>
+{% endwith %}
+{% endblock content %}

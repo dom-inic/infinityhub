@@ -11,6 +11,9 @@
             <a href="{% url "course_edit" course.id %}">Edit</a>
             <a href="{% url "course_delete" course.id %}">Delete</a>
             <a href="{% url "course_topic_update" course.id %}">Edit topics</a>
+            {% if course.topics.count > 0 %}
+            <a href="{% url "topic_content_list" course.topics.first.id %}">Manage contents </a>
+            {% endif %}
         </p>
     </div>
     {% empty %}
