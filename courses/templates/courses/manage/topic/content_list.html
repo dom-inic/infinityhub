@@ -34,8 +34,7 @@ Topic {{ topic.order|add:1}} : {{ topic.title }}
         <div data-id="{{ content.id }}">
             {% with item=content.item %}
             <p>{{ item }} ({{ item|model_name }})</p>
-            {% comment %} TODO :fix reverse match error {% endcomment %}
-            <a href="{% url "topic_content_update" topic.id item|model_name item.id %}">Edit</a>
+            <a href="{% url "topic_content_update" topic.id item|model_name item.id%}">Edit</a>
             <form action="{% url "topic_content_delete" content.id%}" method="post">
                 <input type="submit" value="Delete">
                 {% csrf_token %}

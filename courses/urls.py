@@ -13,7 +13,7 @@ urlpatterns = [
         name="topic_content_create"
         ),
     path(
-        'topic/<int:topic_id>/content/model_name/<id>/',
+        'topic/<int:topic_id>/content/update/<str:model_name>/<int:id>/',
         views.ContentCreateUpdateView.as_view(),
         name='topic_content_update'
         ),

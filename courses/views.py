@@ -104,6 +104,10 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
                             data = request.POST,
                             files = request.FILES
                             )
+        
+        # retrive model name and id from query parameters 
+        model_name = request.GET.get('model_name')
+        id = request.GET.get('id')
         if form.is_valid():
             obj = form.save(commit=False)
             obj.owner = request.user 

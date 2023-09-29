@@ -84,6 +84,135 @@ body {
     margin-bottom: 10px;
 }
 
+/* Style course info */
+.course-info {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+/* Style h3 within course info */
+.course-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style links within course info */
+.course-info a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.course-info a:hover {
+    text-decoration: underline;
+}
+
+/* Style the button */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the contents section */
+.contents {
+    margin-top: 20px;
+}
+
+/* Style the topics list */
+#topics {
+    list-style: none;
+    padding: 0;
+}
+
+#topics li {
+    margin-bottom: 10px;
+}
+
+#topics li.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#topics li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+#topics li a:hover {
+    text-decoration: underline;
+}
+
+/* Style the topic section */
+.topic {
+    margin-top: 20px;
+}
+
+/* Style the h2 within the topic section */
+.topic h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style the h3 within the topic section */
+.topic h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style the topic contents */
+#topic-contents {
+    margin-top: 10px;
+}
+
+#topic-contents div {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+#topic-contents a {
+    text-decoration: none;
+    color: #007bff;
+    margin-left: 10px;
+}
+
+#topic-contents a:hover {
+    text-decoration: underline;
+}
+
+/* Style the content types list */
+.content-types {
+    list-style: none;
+    padding: 0;
+}
+
+.content-types li {
+    margin-bottom: 10px;
+}
+
+.content-types a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.content-types a:hover {
+    text-decoration: underline;
+}
+
 /* Style the login form itself */
 .login-form form {
     display: flex;

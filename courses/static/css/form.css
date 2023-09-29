@@ -1,0 +1,42 @@
+
+/* Style the module */
+.module {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Style the h2 within the module */
+.module h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Style the form within the module */
+.module form {
+    margin-top: 15px;
+}
+
+/* Style form elements (replace with your preferred styling) */
+.module form input[type="text"],
+.module form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style the submit button */
+.module form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.module form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
