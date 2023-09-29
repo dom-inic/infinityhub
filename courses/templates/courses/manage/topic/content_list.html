@@ -55,3 +55,40 @@ Topic {{ topic.order|add:1}} : {{ topic.title }}
 </div>
 {% endwith %}
 {% endblock content %}
+{% block domready %}
+$('#topics').sortable({
+    stop: function(event, ui) {
+        topics_order = {};
+        $('#topics').children().each(function() {
+            // update order field 
+            $(this).find('.order').text($(this).index() + 1);
+            // associate the topic's id with its order 
+            topics_order[$(this).data('id')] = $(this).index();
+        });
+        $.ajax({
+            type: 'POST',
+            url: '{% url "topic_order" %}',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(topics_order),
+        });
+    }
+});
+$('#topic-contents').sortable({
+    stop: function(event, ui){
+        contents_order = {};
+        $('#topic-contents').children().each(function(){
+            // associate the topic's id with its order
+            contents_order[$(this).data('id')] = $(this).index();
+        });
+        $.ajax({
+            type: 'POST',
+            url: '{% url "content_order" %}',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(contents_order),
+        });
+    }
+})
+
+{% endblock domready %}
