@@ -246,6 +246,67 @@ body {
     background-color: #555;
 }
 
+/* Style the footer */
+footer {
+    background-color: #333; /* Background color */
+    color: #fff; /* Text color */
+    padding: 20px 0; /* Padding at the top and bottom */
+    position: absolute; /* Position the footer absolutely */
+    bottom: 0; /* Stick it to the bottom of the viewport */
+    width: 100%; /* Full width */
+}
+
+/* Center the content within the container */
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex; /* Use flexbox to arrange content horizontally */
+    justify-content: space-between; /* Space out the left and right sides */
+    align-items: center; /* Center vertically within the container */
+}
+
+/* Style the left section of the footer */
+.footer-left {
+    flex: 1; /* Take up available space */
+}
+
+/* Style the text in the left section */
+.footer-left p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Font size */
+}
+
+/* Style the right section of the footer */
+.footer-right {
+    flex: 1; /* Take up available space */
+    text-align: right; /* Right-align text within this section */
+}
+
+/* Style the footer menu list */
+.footer-menu {
+    list-style: none; /* Remove list bullets */
+    padding: 0; /* Remove default padding */
+}
+
+/* Style the footer menu items */
+.footer-menu li {
+    display: inline-block; /* Display items horizontally */
+    margin-right: 20px; /* Add space between items */
+}
+
+/* Style the links in the footer menu */
+.footer-menu li a {
+    text-decoration: none; /* Remove underlines */
+    color: #fff; /* Text color */
+    font-size: 14px; /* Font size */
+}
+
+/* Style the links on hover */
+.footer-menu li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
 /* Responsive design for smaller screens */
 @media screen and (max-width: 768px) {
     #content {
