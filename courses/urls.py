@@ -21,5 +21,7 @@ urlpatterns = [
     path('topic/<int:topic_id>/', views.TopicContentList.as_view(), name='topic_content_list'),
     path('topic/order/', views.TopicOrderView.as_view(), name='topic_order'),
     path('content/order/', views.ContentOrderView.as_view(), name='content_order'),
+    path('subject/<slug:subject>/', views.CourseListView.as_view(), name='course_list_subject'),
+    path('<slug:slug>/', views.CourseDetailView.as_view(), name='course_detail'),
 ]
 
