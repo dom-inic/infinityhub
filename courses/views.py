@@ -1,5 +1,6 @@
 
 from pickle import NONE
+from typing import Any
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -13,6 +14,7 @@ from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 from django.db.models import Count
 from . models import Course, Topic,Content, Subject
 from . forms import TopicFormSet
+from students.forms import CourseEnrollForm
 
 class OwnerMixin(object):
 
@@ -167,3 +169,8 @@ class CourseListView(TemplateResponseMixin, View):
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course/detail.html'
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['enroll_form'] = CourseEnrollForm(initial={'course':self.object}) # type: ignore
+        return context
