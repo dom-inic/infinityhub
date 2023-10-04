@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+{{ object.title }}
+{% endblock title %}
+
+{% block content %}
+<h1>
+    {{ topic.title}}
+</h1>
+<div class="contents">
+    <h3>Topics</h3>
+    <ul id="topics">
+        {% for t in topics.objects.all  %}{% endfor %}
+        <li data-id="{{ t.id }}" {% if t == topic %} class="selected"{% endif %}>
+            <a href="{% url "student_course_detail_topic" object.id t.id%}">
+                <span>
+                    Topic <span class="order">{{ t.order|add:1}}</span>
+                </span>
+                <br>
+                {{ t.title }}
+            </a>
+        </li>
+        {% empty %}
+        <li>No topic yet</li>
+    </ul>
+</div>
+<div class="topic">
+    {% for content in topic.contents.all %}
+    {% with item=content.item %}
+    <h2>{{ item.title }}</h2>
+    {{ item.render }}
+    {% endwith %}
+    {% endfor %}
+</div>
+{% endblock content %}
