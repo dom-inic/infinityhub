@@ -10,7 +10,7 @@
 <div class="contents">
     <h3>Topics</h3>
     <ul id="topics">
-        {% for t in topics.objects.all  %}{% endfor %}
+        {% for t in topics.objects.all  %}
         <li data-id="{{ t.id }}" {% if t == topic %} class="selected"{% endif %}>
             <a href="{% url "student_course_detail_topic" object.id t.id%}">
                 <span>
@@ -22,6 +22,7 @@
         </li>
         {% empty %}
         <li>No topic yet</li>
+        {% endfor %}
     </ul>
 </div>
 <div class="topic">

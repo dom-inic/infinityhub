@@ -1,6 +1,16 @@
 asgiref==3.7.2
+certifi==2023.7.22
+charset-normalizer==3.2.0
 Django==4.2.4
 django-braces==1.14.0
+django-embed-video==1.4.9
+django-memcache-status==2.3
+djangorestframework==3.14.0
+idna==3.4
 Pillow==10.0.0
+python-memcached==1.59
+pytz==2023.3.post1
+requests==2.31.0
 six==1.16.0
 sqlparse==0.4.4
+urllib3==2.0.5
