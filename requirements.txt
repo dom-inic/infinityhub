@@ -5,9 +5,11 @@ Django==4.2.4
 django-braces==1.14.0
 django-embed-video==1.4.9
 django-memcache-status==2.3
+django-pylibmc==0.6.1
 djangorestframework==3.14.0
 idna==3.4
 Pillow==10.0.0
+pylibmc==1.6.3
 pymemcache==4.0.0
 python-memcached==1.59
 pytz==2023.3.post1
