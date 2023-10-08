@@ -127,9 +127,9 @@ class ContentDeleteView(View):
     def post(self, request, id):
         content = get_object_or_404(Content, id=id, topic__course__owner=request.user)
         topic = content.topic 
-        content.item.delete()
+        content.item.delete()# type: ignore
         content.delete()
-        return redirect('topic_content_list', topic.id)
+        return redirect('topic_content_list', topic.id)# type: ignore
 
 class TopicContentList(TemplateResponseMixin, View):
     template_name = 'courses/manage/topic/content_list.html'
@@ -140,13 +140,13 @@ class TopicContentList(TemplateResponseMixin, View):
     
 class TopicOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
     def post(self, request):
-        for id, order in self.request_json.items():
+        for id, order in self.request_json.items():# type: ignore
             Topic.objects.filter(id=id, course__owner=request.user).update(order=order)
         return self.render_json_response({'saved': 'OK'})
 
 class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
     def post(self, request):
-        for id, order in self.request_json.items():
+        for id, order in self.request_json.items():# type: ignore
             Content.objects.filter(id=id, topic__course__owner=request.user).update(order=order)
         return self.render_json_response({'saved': 'OK'})
     
