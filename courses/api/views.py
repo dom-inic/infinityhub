@@ -6,8 +6,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from django.shortcuts import get_object_or_404
-from .. models  import Subject, Course
-from . serializers import CourseSerializer, SubjectSerializer
+from .. models  import Subject, Course, Content
+from . serializers import CourseSerializer, SubjectSerializer, CourseWithContentsSerializer
+from courses.api import serializers
+from . permissions import IsEnrolled
+
 
 class SubjectListView(generics.ListAPIView):
     queryset = Subject.objects.all()
@@ -39,4 +42,14 @@ class CourseViewset(viewsets.ReadOnlyModelViewSet):
         course = self.get_object()
         course.students.add(request.user)
         return Response({'enrolled': True})
+    
+    @action(detail=True, 
+            methods=['get'],
+            serializer_class=CourseWithContentsSerializer,
+            authentication_classes = [BasicAuthentication],
+            permission_classes = [IsAuthenticated, IsEnrolled]
+            )
+    def contents(self, request, *args,**kwargs):
+        return self.retrieve(request, *args, **kwargs)
+    
 
