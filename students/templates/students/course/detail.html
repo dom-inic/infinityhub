@@ -28,12 +28,12 @@
 </div>
 <div class="topic">
     {% cache 600 topic_contents topic%}
-        {% for content in topic.contents.all %}
-            {% with item=content.item %}
-                <h2>{{ item.title }}</h2>
-                    {{ item.render }}
-            {% endwith %}
-        {% endfor %}
+    {% for content in topic.contents.all %}
+        {% with item=content.item %}
+            <h2>{{ item.title }}</h2>
+                {{ item.render }}
+        {% endwith %}
+    {% endfor %}
     {% endcache %}
 </div>
 {% endblock content %}

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # third party apps
     'embed_video',
     'memcache_status',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -146,12 +147,19 @@ CACHES = {
         "LOCATION": "127.0.0.1:11211",
         'TIMEOUT': 500,
         'BINARY': True,
-        'OPTIONS': {  # Maps to pylibmc "behaviors"
-            'tcp_nodelay': True,
-            'ketama': True
-        }
+        # 'OPTIONS': {  # Maps to pylibmc "behaviors"
+        #     'tcp_nodelay': True,
+        #     'ketama': True
+        # }
     }
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 15  # 15 minutes
