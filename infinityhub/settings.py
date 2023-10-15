@@ -144,6 +144,12 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
         "LOCATION": "127.0.0.1:11211",
+        'TIMEOUT': 500,
+        'BINARY': True,
+        'OPTIONS': {  # Maps to pylibmc "behaviors"
+            'tcp_nodelay': True,
+            'ketama': True
+        }
     }
 }
 
