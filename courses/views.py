@@ -129,7 +129,7 @@ class ContentDeleteView(View):
         topic = content.topic 
         content.item.delete()# type: ignore
         content.delete()
-        return redirect('topic_content_list', topic.id)# type: ignore
+        return redirect('topic_content_list', topic.id) # type: ignore
 
 class TopicContentList(TemplateResponseMixin, View):
     template_name = 'courses/manage/topic/content_list.html'
@@ -159,11 +159,20 @@ class CourseListView(TemplateResponseMixin, View):
         if not subjects:
             subjects = Subject.objects.annotate(total_courses=Count('courses'))
             cache.set('all_subjects', subjects)
-        courses = Course.objects.annotate(total_topics = Count('topics'))
+        all_courses = Course.objects.annotate(total_topics = Count('topics'))
 
         if subject:
             subject = get_object_or_404(Subject, slug=subject)
-            courses = courses.filter(subject=subject)
+            key = f'subject_{subject.id}_courses' # type: ignore
+            courses = cache.get(key)
+            if not courses:
+                courses = all_courses.filter(subject=subject)
+                cache.set(key, courses)
+        else:
+            courses = cache.get('all_courses')
+            if not courses:
+                courses = all_courses
+                cache.set('all_courses', courses)
         return self.render_to_response({
             'subjects': subjects,
             'subject': subject,
