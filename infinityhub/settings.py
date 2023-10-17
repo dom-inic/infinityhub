@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'embed_video',
     'memcache_status',
     'rest_framework',
+    'channels',
 ]
 
 # disabled whole site cache to avoid caching unnecessary pages
@@ -83,6 +84,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'infinityhub.wsgi.application'
+ASGI_APPLICATION = 'infinityhub.routing.application'
 
 
 # Database
