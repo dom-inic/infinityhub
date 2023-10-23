@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'courses.apps.CoursesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -84,7 +85,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'infinityhub.wsgi.application'
-ASGI_APPLICATION = 'infinityhub.routing.application'
 
 
 # Database
@@ -168,3 +168,6 @@ REST_FRAMEWORK = {
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 15  # 15 minutes
 CACHE_MIDDLEWARE_KEY_PREFIX = 'infinityhub'
+
+
+ASGI_APPLICATION = 'infinityhub.asgi.application'
