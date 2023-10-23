@@ -17,5 +17,42 @@
 <script>
     const url = 'ws://' + window.location.host + '/ws/chat/room/' + '{{ course.id }}/';
     const chatSocket = new WebSocket(url);
+
+    chatSocket.onmessage = function(e){
+        let data = JSON.parse(e.data);
+        let message = data.message;
+
+        let $chat = $('#chat')
+        $chat.append('<div class="message">' + message + "</div>");
+        $chat.scrollTop($chat[0].scrollHeight);
+    };
+
+    chatSocket.onclose = function(e){
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    let $input = $('#chat-message-input');
+    let $submit = $('#chat-message-submit');
+
+    $submit.click(function() {
+        let message = $input.val();
+        if(message) {
+            // send message in JSON format
+            chatSocket.send(JSON.stringify({'message': message}));
+
+            // clear input
+            $input.val('');
+
+            // return focus 
+            $input.focus();
+        }
+    }); 
+    $input.focus();
+    $input.keyup(function(e) {
+        if (e.which === 13 ){
+            // submit with enter / return key
+            $submit.click();
+        }
+    })
 </script>
 {% endblock scripts %}
