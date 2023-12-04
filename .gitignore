@@ -6,3 +6,8 @@ files/
 __pycache__
 __pycache__/
 /__pycache__
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
