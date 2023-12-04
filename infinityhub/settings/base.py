@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'django-insecure-*_r4dn477)u-2wj=z23l%dh_ie!qo&%4d$aurjmhu50s_h#n-^'
 
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'django-env.eba-yzaemkmg.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
